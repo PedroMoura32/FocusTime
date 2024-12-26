@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Atividades</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Botão Dark Mode -->
+    <button id="dark-mode-btn" class="dark-mode-btn">Dark Mode</button>
+
+    <!-- Container principal -->
+    <div class="container">
+        <!-- Título -->
+        <h1 class="title">Gerenciador de Atividades</h1>
+
+        <!-- Exibição de status -->
+        <div id="activity-display" class="activity-display">Nenhuma atividade em andamento</div>
+
+        <!-- Formulário -->
+        <div class="activity-input">
+            <input type="text" id="activity-title" placeholder="Título da Atividade">
+            <input type="text" id="activity-card" placeholder="Número do Card (opcional)">
+            <input type="text" id="activity-client" placeholder="Nome do Cliente">
+            <button id="start-button" disabled>Iniciar</button>
+            <button id="pause-button" disabled>Parar</button>
+            <button id="export-button" class="export-btn">Exportar CSV</button>
+        </div>
+
+        <!-- Tabela de Atividades -->
+        <table id="activity-table">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Atividade</th>
+                    <th>Cliente</th>
+                    <th>Card</th>
+                    <th>Início</th>
+                    <th>Fim</th>
+                    <th>Tempo Total</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6">Total de Tempo</td>
+                    <td id="total-time">00:00:00</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <!-- Modal para Descrição -->
+    <div id="description-modal" class="modal">
+        <div class="modal-content">
+            <h3>Adicionar Descrição</h3>
+            <textarea id="activity-description" placeholder="Digite a descrição da atividade..."></textarea>
+            <button id="save-description-button">Salvar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
