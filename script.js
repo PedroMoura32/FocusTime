@@ -156,6 +156,10 @@ document.addEventListener('DOMContentLoaded', () => {
         link.click();
     });
 
+    // Define o modo escuro como padrão
+    document.body.classList.add('dark-mode');
+    darkModeButton.textContent = 'Nutela Mode'; // Define o texto do botão
+
     // Alternar Modo Escuro
     darkModeButton.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');

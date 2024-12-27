@@ -158,3 +158,86 @@ textarea {
     margin-bottom: 10px;
     padding: 5px;
 }
+
+
+/* Tooltip personalizado */
+#export-button {
+    position: relative;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+#export-button:hover {
+    background-color: #0056b3; /* Azul mais escuro no hover */
+}
+
+/* Estilo da Tooltip */
+.tooltip {
+    position: absolute;
+    bottom: 130%; /* Posiciona acima do botão */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0; /* Invisível por padrão */
+    visibility: hidden;
+    transition: opacity 0.3s;
+    pointer-events: none; /* Não interfere com cliques */
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%; /* Triângulo apontando para o botão */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+/* Mostrar Tooltip no Hover */
+#export-button:hover .tooltip {
+    opacity: 1; /* Torna visível */
+    visibility: visible;
+}
+
+/* Botão Iniciar (verde) */
+#start-button {
+    background-color: #28a745; /* Verde */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#start-button:hover {
+    background-color: #218838; /* Verde mais escuro no hover */
+}
+
+/* Botão Parar (vermelho) */
+#pause-button {
+    background-color: #dc3545; /* Vermelho */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#pause-button:hover {
+    background-color: #c82333; /* Vermelho mais escuro no hover */
+}
