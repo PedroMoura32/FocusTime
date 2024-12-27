@@ -76,12 +76,12 @@ document.addEventListener('DOMContentLoaded', () => {
         startTime = Date.now(); // Armazena o horário de início
         elapsedTime = 0; // Reseta o tempo decorrido
         activityDisplay.classList.add('running'); // Adiciona estilo verde
-        activityDisplay.textContent = `Cronômetro: 00:00:00`;
+        activityDisplay.textContent = `Iniciando Atividade: 00:00:00`;
 
         timerInterval = setInterval(() => {
             const currentTime = Date.now();
             const elapsed = currentTime - startTime;
-            activityDisplay.textContent = `Cronômetro: ${formatTime(elapsed)}`;
+            activityDisplay.textContent = `${titleInput.value}: ${formatTime(elapsed)}`;
             updateTabTitle(elapsed); // Atualiza o título da aba
         }, 1000);
 

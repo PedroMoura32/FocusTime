@@ -78,6 +78,10 @@ body.dark-mode .activity-display {
     color: green; /* Cronômetro em verde quando em execução */
 }
 
+body.dark-mode .activity-display.running {
+    color: green; /* Cronômetro em verde quando em execução */
+}
+
 /* Formulário */
 .activity-input input,
 .activity-input button {
@@ -89,6 +93,8 @@ body.dark-mode .activity-display {
 
 .activity-input input {
     border: 1px solid #ccc;
+    background-color: #444;
+    color: white;
 }
 
 .activity-input button {
