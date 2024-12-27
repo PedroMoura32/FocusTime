@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciador de Atividades</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
 </head>
 <body>
     <!-- Botão Dark Mode -->
-    <button id="dark-mode-btn" class="dark-mode-btn">Dark Mode</button>
+    <button id="dark-mode-btn" class="dark-mode-btn"><i class="bi bi-moon-stars"></i></button>
 
     <!-- Container principal -->
     <div class="container">
@@ -20,10 +23,10 @@
 
         <!-- Formulário -->
         <div class="activity-input">
-            <input type="text" id="activity-title" placeholder="Título da Atividade">
-            <input type="text" id="activity-card" placeholder="Número do Card (opcional)">
-            <input type="text" id="activity-client" placeholder="Nome do Cliente">
-            <button id="start-button" disabled>Iniciar</button>
+            <input type="text" id="activity-title" placeholder="Atividade">
+            <input type="text" id="activity-client" placeholder="Cliente">
+            <input type="text" id="activity-card" placeholder="Card (opcional)">
+            <button id="start-button" disabled><i class="bi bi-play"></i>Iniciar</button>
             <button id="pause-button" disabled>Parar</button>
             <button id="export-button" class="export-btn">Exportar CSV</button>
         </div>
@@ -63,5 +66,8 @@
     </div>
 
     <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
