@@ -79,10 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
         activityDisplay.textContent = `Iniciando Atividade: 00:00:00`;
 
         timerInterval = setInterval(() => {
-            const currentTime = Date.now();
-            const elapsed = currentTime - startTime;
-            activityDisplay.textContent = `${titleInput.value}: ${formatTime(elapsed)}`;
-            updateTabTitle(elapsed); // Atualiza o título da aba
+            if (startTime && Date.now() > startTime) { // Verifica se o tempo é válido
+                const elapsed = Date.now() - startTime;
+                activityDisplay.textContent = `${titleInput.value}: ${formatTime(elapsed)}`;
+                updateTabTitle(elapsed); // Atualiza o título da aba
+            }
         }, 1000);
 
         startButton.disabled = true;
@@ -141,20 +142,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Exportar para CSV
     exportButton.addEventListener('click', () => {
-        const rows = [['Data', 'Atividade', 'Cliente', 'Card', 'Início', 'Fim', 'Tempo Total', 'Descrição']];
-        tableBody.querySelectorAll('tr').forEach(row => {
-            const cells = Array.from(row.children).map(cell => cell.textContent);
-            rows.push(cells);
-        });
-
-        const csvContent = rows.map(e => e.join(',')).join('\n');
-        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.setAttribute('download', 'atividades.csv');
-        link.click();
+    const rows = [['Data', 'Atividade', 'Cliente', 'Card', 'Início', 'Fim', 'Tempo Total', 'Descrição']];
+    tableBody.querySelectorAll('tr').forEach(row => {
+        const cells = Array.from(row.children).map(cell => `"${cell.textContent.replace(/"/g, '""')}"`);
+        rows.push(cells);
     });
+
+    const csvContent = rows.map(e => e.join(',')).join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', 'atividades.csv');
+    link.click();
+});
 
     // Define o modo escuro como padrão
     document.body.classList.add('dark-mode');
@@ -173,4 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicializa os botões corretamente
     validateInputs();
 
+    window.addEventListener('beforeunload', () => {
+    clearInterval(timerInterval); // Limpa o intervalo ao recarregar/fechar a página
+    });
 });
