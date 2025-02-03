@@ -348,3 +348,27 @@ textarea {
 #task-list li button:hover {
     background-color: #c82333;
 }
+
+/* Modo Dark para a seção de tarefas */
+body.dark-mode .daily-tasks {
+    background-color: #444;
+    color: #fff;
+}
+
+body.dark-mode #task-input {
+    background-color: #555;
+    color: #fff;
+    border-color: #666;
+}
+
+body.dark-mode #task-list li {
+    border-color: #666;
+}
+
+body.dark-mode #task-list li button {
+    background-color: #dc3545;
+}
+
+body.dark-mode #task-list li button:hover {
+    background-color: #c82333;
+}
