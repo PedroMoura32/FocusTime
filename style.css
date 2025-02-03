@@ -150,7 +150,8 @@ tfoot td {
     padding: 20px;
     border-radius: 8px;
     text-align: center;
-    width: 300px;
+    width: 90%;
+    max-width: 300px;
 }
 
 body.dark-mode .modal-content {
@@ -246,4 +247,18 @@ textarea {
 
 #pause-button:hover {
     background-color: #c82333; /* Vermelho mais escuro no hover */
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    .activity-input input,
+    .activity-input button {
+        width: 100%;
+        margin: 5px 0;
+    }
+    table {
+        font-size: 14px;
+    }
 }
