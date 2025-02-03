@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('description-modal');
     const descriptionInput = document.getElementById('activity-description');
     const saveDescriptionButton = document.getElementById('save-description-button');
+    const taskInput = document.getElementById('task-input');
+    const addTaskBtn = document.getElementById('add-task-btn');
+    const taskList = document.getElementById('task-list');
 
     let timerInterval; // Armazena o intervalo do cronômetro
     let startTime; // Armazena o horário de início
@@ -188,99 +191,94 @@ document.addEventListener('DOMContentLoaded', () => {
     clearInterval(timerInterval); // Limpa o intervalo ao recarregar/fechar a página
     });
 
-    //Atividades do dia.
-    document.addEventListener('DOMContentLoaded', () => {
-        const taskInput = document.getElementById('task-input');
-        const addTaskBtn = document.getElementById('add-task-btn');
-        const taskList = document.getElementById('task-list');
+    //Atividades do dia.       
     
-        // Função para salvar tarefas no localStorage
-        function saveTasks() {
-            const tasks = [];
-            taskList.querySelectorAll('li').forEach(li => {
-                tasks.push({
-                    text: li.querySelector('span').textContent,
-                    completed: li.querySelector('input').checked
-                });
+    // Função para salvar tarefas no localStorage
+    function saveTasks() {
+        const tasks = [];
+        taskList.querySelectorAll('li').forEach(li => {
+            tasks.push({
+                text: li.querySelector('span').textContent,
+                completed: li.querySelector('input').checked
             });
-            localStorage.setItem('tasks', JSON.stringify(tasks));
-        }
-    
-        // Função para carregar tarefas do localStorage
-        function loadTasks() {
-            const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-            tasks.forEach(task => {
-                const li = document.createElement('li');
-    
-                const checkbox = document.createElement('input');
-                checkbox.type = 'checkbox';
-                checkbox.checked = task.completed;
-                checkbox.addEventListener('change', () => {
-                    li.style.textDecoration = checkbox.checked ? 'line-through' : 'none';
-                    saveTasks();
-                });
-    
-                const span = document.createElement('span');
-                span.textContent = task.text;
-                if (task.completed) {
-                    li.style.textDecoration = 'line-through';
-                }
-    
-                const removeBtn = document.createElement('button');
-                removeBtn.textContent = 'X';
-                removeBtn.addEventListener('click', () => {
-                    taskList.removeChild(li);
-                    saveTasks();
-                });
-    
-                li.appendChild(checkbox);
-                li.appendChild(span);
-                li.appendChild(removeBtn);
-                taskList.appendChild(li);
-            });
-        }
-    
-        // Carregar tarefas ao iniciar a página
-        loadTasks();
-    
-        // Adicionar tarefa
-        addTaskBtn.addEventListener('click', () => {
-            const taskText = taskInput.value.trim();
-            if (taskText) {
-                const li = document.createElement('li');
-    
-                const checkbox = document.createElement('input');
-                checkbox.type = 'checkbox';
-                checkbox.addEventListener('change', () => {
-                    li.style.textDecoration = checkbox.checked ? 'line-through' : 'none';
-                    saveTasks();
-                });
-    
-                const span = document.createElement('span');
-                span.textContent = taskText;
-    
-                const removeBtn = document.createElement('button');
-                removeBtn.textContent = 'X';
-                removeBtn.addEventListener('click', () => {
-                    taskList.removeChild(li);
-                    saveTasks();
-                });
-    
-                li.appendChild(checkbox);
-                li.appendChild(span);
-                li.appendChild(removeBtn);
-                taskList.appendChild(li);
-    
-                taskInput.value = '';
+        });
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+
+    // Função para carregar tarefas do localStorage
+    function loadTasks() {
+        const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        tasks.forEach(task => {
+            const li = document.createElement('li');
+
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.checked = task.completed;
+            checkbox.addEventListener('change', () => {
+                li.style.textDecoration = checkbox.checked ? 'line-through' : 'none';
                 saveTasks();
+            });
+
+            const span = document.createElement('span');
+            span.textContent = task.text;
+            if (task.completed) {
+                li.style.textDecoration = 'line-through';
             }
+
+            const removeBtn = document.createElement('button');
+            removeBtn.textContent = 'X';
+            removeBtn.addEventListener('click', () => {
+                taskList.removeChild(li);
+                saveTasks();
+            });
+
+            li.appendChild(checkbox);
+            li.appendChild(span);
+            li.appendChild(removeBtn);
+            taskList.appendChild(li);
         });
-    
-        // Adicionar tarefa ao pressionar Enter
-        taskInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                addTaskBtn.click();
-            }
-        });
+    }
+
+    // Carregar tarefas ao iniciar a página
+    loadTasks();
+
+    // Adicionar tarefa
+    addTaskBtn.addEventListener('click', () => {
+        const taskText = taskInput.value.trim();
+        if (taskText) {
+            const li = document.createElement('li');
+
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.addEventListener('change', () => {
+                li.style.textDecoration = checkbox.checked ? 'line-through' : 'none';
+                saveTasks();
+            });
+
+            const span = document.createElement('span');
+            span.textContent = taskText;
+
+            const removeBtn = document.createElement('button');
+            removeBtn.textContent = 'X';
+            removeBtn.addEventListener('click', () => {
+                taskList.removeChild(li);
+                saveTasks();
+            });
+
+            li.appendChild(checkbox);
+            li.appendChild(span);
+            li.appendChild(removeBtn);
+            taskList.appendChild(li);
+
+            taskInput.value = '';
+            saveTasks();
+        }
+    });
+
+    // Adicionar tarefa ao pressionar Enter
+    taskInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            addTaskBtn.click();
+        }
     });
 });
