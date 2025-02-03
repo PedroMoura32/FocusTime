@@ -142,20 +142,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Exportar para CSV
     exportButton.addEventListener('click', () => {
-    const rows = [['Data', 'Atividade', 'Cliente', 'Card', 'Início', 'Fim', 'Tempo Total', 'Descrição']];
-    tableBody.querySelectorAll('tr').forEach(row => {
-        const cells = Array.from(row.children).map(cell => `"${cell.textContent.replace(/"/g, '""')}"`);
-        rows.push(cells);
+        const rows = [['Data', 'Atividade', 'Cliente', 'Card', 'Início', 'Fim', 'Tempo Total', 'Descrição']];
+        tableBody.querySelectorAll('tr').forEach(row => {
+            const cells = Array.from(row.children).map(cell => `"${cell.textContent.replace(/"/g, '""')}"`);
+            rows.push(cells);
+        });
+    
+        const csvContent = rows.map(e => e.join(',')).join('\n');
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+    
+        // Função para formatar a data no formato "dia-mes"
+        function getFormattedDate() {
+            const date = new Date();
+            const day = String(date.getDate()).padStart(2, '0'); // Dia com dois dígitos
+            const month = String(date.getMonth() + 1).padStart(2, '0'); // Mês com dois dígitos
+            return `${day}-${month}`;
+        }
+    
+        // Adiciona a data ao nome do arquivo
+        link.setAttribute('download', `atividades-${getFormattedDate()}.csv`);
+        link.click();
     });
-
-    const csvContent = rows.map(e => e.join(',')).join('\n');
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.setAttribute('download', 'atividades.csv');
-    link.click();
-});
 
     // Define o modo escuro como padrão
     document.body.classList.add('dark-mode');
