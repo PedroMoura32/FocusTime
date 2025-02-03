@@ -11,7 +11,7 @@
 </head>
 <body>
     <!-- Botão Dark Mode -->
-    <button id="dark-mode-btn" class="dark-mode-btn"><i class="bi bi-moon-stars"></i></button>
+    <button id="dark-mode-btn" class="dark-mode-btn" aria-label="Alternar modo escuro"><i class="bi bi-moon-stars"></i></button>
 
     <!-- Container principal -->
     <div class="container">
@@ -23,8 +23,8 @@
 
         <!-- Formulário -->
         <div class="activity-input">
-            <input type="text" id="activity-title" placeholder="Atividade">
-            <input type="text" id="activity-client" placeholder="Cliente">
+            <input type="text" id="activity-title" placeholder="Atividade" required>
+            <input type="text" id="activity-client" placeholder="Cliente" required>
             <input type="text" id="activity-card" placeholder="Card (opcional)">
             <button id="start-button" disabled><i class="bi bi-play"></i>Iniciar</button>
             <button id="pause-button" disabled><i class="bi bi-stop-circle"></i> Parar</button>
