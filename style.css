@@ -164,6 +164,8 @@ textarea {
     height: 100px;
     margin-bottom: 10px;
     padding: 5px;
+    border: 1px solid #ccc;
+    background-color: #444;
 }
 
 
@@ -230,6 +232,21 @@ textarea {
 }
 
 #start-button:hover {
+    background-color: #218838; /* Verde mais escuro no hover */
+}
+
+#save-description-button {
+    background-color: #28a745; /* Verde */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#save-description-button:hover {
     background-color: #218838; /* Verde mais escuro no hover */
 }
 
