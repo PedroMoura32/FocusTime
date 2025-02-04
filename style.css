@@ -36,6 +36,16 @@ body {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Garantir que textos dentro de containers usem a cor correta */
+.container, .daily-tasks, .modal-content {
+    color: var(--text-color);
+}
+
+/* Garantir que textos dentro de inputs e textareas usem a cor correta */
+input, textarea {
+    color: var(--text-color);
+}
+
 /* Título */
 .title {
     text-align: center;
