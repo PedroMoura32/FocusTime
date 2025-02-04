@@ -1,3 +1,4 @@
+/* style.css */
 /* Reset básico */
 * {
     margin: 0;
@@ -5,17 +6,17 @@
     box-sizing: border-box;
 }
 
-/* Variáveis de cores (modo escuro) */
+/* Variáveis de cores (Tema VS Code Dark+) */
 :root {
-    --bg-color: #1a1a1a;          /* Cor de fundo principal */
-    --text-color: #e0e0e0;        /* Cor do texto */
-    --container-bg: #2d2d2d;      /* Cor de containers */
-    --input-bg: #3d3d3d;          /* Cor de fundo de inputs */
-    --border-color: #4d4d4d;      /* Cor das bordas */
-    --primary-blue: #007bff;      /* Azul primário */
-    --hover-blue: #0056b3;        /* Azul hover */
-    --danger-red: #dc3545;        /* Vermelho para botões de ação */
-    --success-green: #28a745;     /* Verde para confirmações */
+    --bg-color: #1e1e1e;          /* Cor de fundo principal (quase preto) */
+    --text-color: #d4d4d4;        /* Texto cinza claro */
+    --container-bg: #252526;      /* Cor de containers (cinza escuro) */
+    --input-bg: #2d2d2d;          /* Fundo de inputs */
+    --border-color: #3c3c3c;      /* Bordas cinza médio */
+    --primary-blue: #007acc;      /* Azul do VS Code */
+    --hover-blue: #0066b3;        /* Azul hover */
+    --danger-red: #f14c4c;        /* Vermelho para ações destrutivas */
+    --success-green: #4ec9b0;     /* Verde água para confirmações */
 }
 
 /* Body */
@@ -40,7 +41,6 @@ body {
     text-align: center;
     font-size: 2rem;
     margin-bottom: 20px;
-    color: var(--text-color);
 }
 
 /* Atividade em andamento */
@@ -48,11 +48,10 @@ body {
     font-size: 1.2rem;
     margin: 20px 0;
     font-weight: bold;
-    color: var(--text-color);
 }
 
 .activity-display.running {
-    color: var(--success-green); /* Verde para atividade em execução */
+    color: var(--success-green); /* Verde água para atividade em execução */
 }
 
 /* Formulário */
@@ -136,7 +135,7 @@ textarea {
 }
 
 #start-button:hover {
-    background-color: #218838;
+    background-color: #3fb39d; /* Tom mais escuro do verde */
 }
 
 #pause-button {
@@ -144,7 +143,7 @@ textarea {
 }
 
 #pause-button:hover {
-    background-color: #c82333;
+    background-color: #d14343; /* Tom mais escuro do vermelho */
 }
 
 /* Atividades do Dia */
@@ -185,6 +184,11 @@ textarea {
     background-color: var(--hover-blue);
 }
 
+#task-list {
+    list-style: none;
+    padding: 0;
+}
+
 #task-list li {
     display: flex;
     align-items: center;
@@ -193,20 +197,34 @@ textarea {
     border-bottom: 1px solid var(--border-color);
 }
 
+#task-list li:last-child {
+    border-bottom: none;
+}
+
+#task-list li input[type="checkbox"] {
+    cursor: pointer;
+}
+
 #task-list li button {
+    margin-left: auto;
     background-color: var(--danger-red);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 #task-list li button:hover {
-    background-color: #c82333;
+    background-color: #d14343;
 }
 
 /* Tooltip do botão Exportar */
 .tooltip {
-    background-color: #000;
-    color: #fff;
+    background-color: #000000;
+    color: #ffffff;
 }
 
 .tooltip::after {
-    border-color: #000 transparent transparent transparent;
+    border-color: #000000 transparent transparent transparent;
 }
