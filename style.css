@@ -20,9 +20,9 @@
 }
 
 /* Body */
-body {
+body, html {
     font-family: Arial, sans-serif;
-    background-color: var(--bg-color);
+    background-color: #1e1e1e;
     color: var(--text-color);
 }
 
