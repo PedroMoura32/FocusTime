@@ -8,19 +8,19 @@
 
 /* Variáveis de cores (Tema VS Code Dark+) */
 :root {
-    --bg-color: #1e1e1e;          /* Cor de fundo principal (quase preto) */
-    --text-color: #d4d4d4;        /* Texto cinza claro */
-    --container-bg: #252526;      /* Cor de containers (cinza escuro) */
-    --input-bg: #2d2d2d;          /* Fundo de inputs */
-    --border-color: #3c3c3c;      /* Bordas cinza médio */
-    --primary-blue: #007acc;      /* Azul do VS Code */
-    --hover-blue: #0066b3;        /* Azul hover */
-    --danger-red: #f14c4c;        /* Vermelho para ações destrutivas */
-    --success-green: #4ec9b0;     /* Verde água para confirmações */
+    --bg-color: #282a36;          /* Fundo escuro (Dracula Background) */
+    --text-color: #f8f8f2;        /* Texto branco suave (Dracula Foreground) */
+    --container-bg: #44475a;      /* Container (Dracula Current Line) */
+    --input-bg: #6272a4;          /* Inputs (Dracula Comment) */
+    --border-color: #6272a4;      /* Bordas (Dracula Comment) */
+    --primary-blue: #bd93f9;      /* Roxo (Dracula Purple) */
+    --hover-blue: #8a6fcc;        /* Roxo mais escuro (hover) */
+    --danger-red: #ff5555;        /* Vermelho (Dracula Red) */
+    --success-green: #50fa7b;     /* Verde (Dracula Green) */
 }
 
 /* Body */
-body {
+html {
     font-family: Arial, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
