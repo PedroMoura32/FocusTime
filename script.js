@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const pauseButton = document.getElementById('pause-button');
     const exportButton = document.getElementById('export-button');
     const activityDisplay = document.getElementById('activity-display');
-    const darkModeButton = document.getElementById('dark-mode-btn');
     const tableBody = document.querySelector('#activity-table tbody');
     const totalTimeCell = document.getElementById('total-time');
     const modal = document.getElementById('description-modal');
@@ -168,16 +167,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Adiciona a data ao nome do arquivo
         link.setAttribute('download', `atividades-${getFormattedDate()}.csv`);
         link.click();
-    });
-
-    // Define o modo escuro como padrão
-    document.body.classList.add('dark-mode');
-    darkModeButton.textContent = 'Nutela Mode'; // Define o texto do botão
-
-    // Alternar Modo Escuro
-    darkModeButton.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        darkModeButton.textContent = document.body.classList.contains('dark-mode') ? 'Nutela Mode' : 'Dark Mode';
     });
 
     // Validar inputs em tempo real

@@ -5,53 +5,34 @@
     box-sizing: border-box;
 }
 
+/* Variáveis de cores (modo escuro) */
+:root {
+    --bg-color: #1a1a1a;          /* Cor de fundo principal */
+    --text-color: #e0e0e0;        /* Cor do texto */
+    --container-bg: #2d2d2d;      /* Cor de containers */
+    --input-bg: #3d3d3d;          /* Cor de fundo de inputs */
+    --border-color: #4d4d4d;      /* Cor das bordas */
+    --primary-blue: #007bff;      /* Azul primário */
+    --hover-blue: #0056b3;        /* Azul hover */
+    --danger-red: #dc3545;        /* Vermelho para botões de ação */
+    --success-green: #28a745;     /* Verde para confirmações */
+}
+
 /* Body */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-    transition: background-color 0.3s, color 0.3s;
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }
 
-/* Modo Escuro */
-body.dark-mode {
-    background-color: #333;
-    color: #f4f4f9;
-}
-
-/* Botão Dark Mode */
-.dark-mode-btn {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    padding: 8px 12px;
-    border: none;
-    background-color: #4F4F4F;
-    color: white;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-}
-
-.dark-mode-btn:hover {
-    background-color: #363636;
-}
-
-/* Container */
+/* Container principal */
 .container {
     max-width: 900px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: var(--container-bg);
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    text-align: center; /* Centraliza o conteúdo */
-    transition: background-color 0.3s;
-}
-
-body.dark-mode .container {
-    background-color: #444;
-    color: #fff;
 }
 
 /* Título */
@@ -59,27 +40,19 @@ body.dark-mode .container {
     text-align: center;
     font-size: 2rem;
     margin-bottom: 20px;
+    color: var(--text-color);
 }
 
 /* Atividade em andamento */
 .activity-display {
     font-size: 1.2rem;
     margin: 20px 0;
-    color: #555;
     font-weight: bold;
-    transition: color 0.3s;
-}
-
-body.dark-mode .activity-display {
-    color: #ddd;
+    color: var(--text-color);
 }
 
 .activity-display.running {
-    color: green; /* Cronômetro em verde quando em execução */
-}
-
-body.dark-mode .activity-display.running {
-    color: green; /* Cronômetro em verde quando em execução */
+    color: var(--success-green); /* Verde para atividade em execução */
 }
 
 /* Formulário */
@@ -92,20 +65,20 @@ body.dark-mode .activity-display.running {
 }
 
 .activity-input input {
-    border: 1px solid #ccc;
-    background-color: #444;
-    color: white;
+    border: 1px solid var(--border-color);
+    background-color: var(--input-bg);
+    color: var(--text-color);
 }
 
 .activity-input button {
-    background-color: #007bff;
-    color: white;
+    background-color: var(--primary-blue);
+    color: var(--text-color);
     border: none;
     cursor: pointer;
 }
 
 .activity-input button:hover {
-    background-color: #0056b3;
+    background-color: var(--hover-blue);
 }
 
 /* Tabela */
@@ -118,16 +91,10 @@ table {
 table th,
 table td {
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     text-align: center;
 }
 
-body.dark-mode table th,
-body.dark-mode table td {
-    border-color: #666;
-}
-
-/* Rodapé da tabela */
 tfoot td {
     font-weight: bold;
 }
@@ -146,17 +113,11 @@ tfoot td {
 }
 
 .modal-content {
-    background-color: white;
+    background-color: var(--container-bg);
     padding: 20px;
     border-radius: 8px;
     text-align: center;
-    width: 90%;
-    max-width: 300px;
-}
-
-body.dark-mode .modal-content {
-    background-color: #555;
-    color: #fff;
+    width: 300px;
 }
 
 textarea {
@@ -164,130 +125,34 @@ textarea {
     height: 100px;
     margin-bottom: 10px;
     padding: 5px;
-    border: 1px solid #ccc;
-    background-color: #444;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
 }
 
-
-/* Tooltip personalizado */
-#export-button {
-    position: relative;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    padding: 10px;
-}
-
-#export-button:hover {
-    background-color: #0056b3; /* Azul mais escuro no hover */
-}
-
-/* Estilo da Tooltip */
-.tooltip {
-    position: absolute;
-    bottom: 130%; /* Posiciona acima do botão */
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: black;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-size: 12px;
-    white-space: nowrap;
-    opacity: 0; /* Invisível por padrão */
-    visibility: hidden;
-    transition: opacity 0.3s;
-    pointer-events: none; /* Não interfere com cliques */
-}
-
-.tooltip::after {
-    content: '';
-    position: absolute;
-    top: 100%; /* Triângulo apontando para o botão */
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 5px;
-    border-style: solid;
-    border-color: black transparent transparent transparent;
-}
-
-/* Mostrar Tooltip no Hover */
-#export-button:hover .tooltip {
-    opacity: 1; /* Torna visível */
-    visibility: visible;
-}
-
-/* Botão Iniciar (verde) */
+/* Botões específicos */
 #start-button {
-    background-color: #28a745; /* Verde */
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    padding: 10px 20px;
-    font-size: 16px;
-    transition: background-color 0.3s;
+    background-color: var(--success-green);
 }
 
 #start-button:hover {
-    background-color: #218838; /* Verde mais escuro no hover */
+    background-color: #218838;
 }
 
-#save-description-button {
-    background-color: #28a745; /* Verde */
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    padding: 5px 10px;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-#save-description-button:hover {
-    background-color: #218838; /* Verde mais escuro no hover */
-}
-
-/* Botão Parar (vermelho) */
 #pause-button {
-    background-color: #dc3545; /* Vermelho */
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    padding: 10px 20px;
-    font-size: 16px;
-    transition: background-color 0.3s;
+    background-color: var(--danger-red);
 }
 
 #pause-button:hover {
-    background-color: #c82333; /* Vermelho mais escuro no hover */
+    background-color: #c82333;
 }
 
-@media (max-width: 768px) {
-    .container {
-        padding: 10px;
-    }
-    .activity-input input,
-    .activity-input button {
-        width: 100%;
-        margin: 5px 0;
-    }
-    table {
-        font-size: 14px;
-    }
-}
-
-
-
+/* Atividades do Dia */
 .daily-tasks {
     max-width: 900px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #444;
-    color: #fff;
+    background-color: var(--container-bg);
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
@@ -301,26 +166,23 @@ textarea {
 #task-input {
     flex: 1;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
 }
 
 #add-task-btn {
     padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
+    background-color: var(--primary-blue);
+    color: var(--text-color);
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
 #add-task-btn:hover {
-    background-color: #0056b3;
-}
-
-#task-list {
-    list-style: none;
-    padding: 0;
+    background-color: var(--hover-blue);
 }
 
 #task-list li {
@@ -328,55 +190,23 @@ textarea {
     align-items: center;
     gap: 10px;
     padding: 10px;
-    border-bottom: 1px solid #eee;
-}
-
-#task-list li:last-child {
-    border-bottom: none;
-}
-
-#task-list li input[type="checkbox"] {
-    cursor: pointer;
+    border-bottom: 1px solid var(--border-color);
 }
 
 #task-list li button {
-    margin-left: auto;
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
+    background-color: var(--danger-red);
 }
 
 #task-list li button:hover {
     background-color: #c82333;
 }
 
-
-
-
-
-/* Modo Dark para a seção de tarefas */
-body.dark-mode .daily-tasks {
-    background-color: #444;
+/* Tooltip do botão Exportar */
+.tooltip {
+    background-color: #000;
     color: #fff;
 }
 
-body.dark-mode #task-input {
-    background-color: #555;
-    color: #fff;
-    border-color: #666;
-}
-
-body.dark-mode #task-list li {
-    border-color: #666;
-}
-
-body.dark-mode #task-list li button {
-    background-color: #dc3545;
-}
-
-body.dark-mode #task-list li button:hover {
-    background-color: #c82333;
+.tooltip::after {
+    border-color: #000 transparent transparent transparent;
 }
